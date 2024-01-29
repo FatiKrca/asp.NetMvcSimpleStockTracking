@@ -1,0 +1,61 @@
+﻿@model  MvcStokTakip.Models.Entity.TBLURUNLER
+
+@{
+    ViewBag.Title = "YeniUrün";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@if (ViewBag.UrunZatenVar != null)
+{
+    <div id="alertDiv" class="alert alert-danger">
+        <h3>
+            Ürün Zaten Var...
+        </h3>
+    </div>
+}
+<div style="text-align:center">
+    <h2>ÜRÜN EKLE</h2>
+</div>
+<div class="container">
+    <form class="form-group" method="post">
+
+        <div>
+            <label>Ürün Adı</label>
+            <input type="text" / class="form-control" name="URUNAD" required="" maxlength="49">
+        </div>
+        <div style="margin-top:15px">
+            <label>Ürün Markası </label>
+            <input type="text" / class="form-control" name="MARKA" required="" maxlength="49">
+        </div>
+        <div style="margin-top:15px">
+            <label>Ürün Kategrois Seçiniz</label>
+            @Html.DropDownListFor(item => item.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:15px">
+            <label>Ürün Fiyatı</label>
+            <input type="text" / class="form-control" name="FIYAT">
+        </div>
+        <div style="margin-top:15px">
+            <label>Ürün Stokğu</label>
+            <input type="text" / class="form-control" name="STOK">
+        </div>
+
+
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Ürün Ekle</button>
+
+        </div>
+    </form>
+
+</div>
+<script>
+    $(".alerDiv").ready(function () {
+
+
+        // Hide the alert after 4 seconds
+        setTimeout(function () {
+            $('#alertDiv').fadeOut('slow');
+        }, 4000);
+    });
+
+</script>

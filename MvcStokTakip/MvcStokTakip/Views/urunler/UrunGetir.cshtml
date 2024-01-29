@@ -1,0 +1,40 @@
+﻿ @model MvcStokTakip.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="text-align:center">
+    <h2>ÜRÜN GUNCELLE</h2>
+</div>
+
+@using (Html.BeginForm("Guncelle", "URUNLER", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.URUNID)
+        @Html.TextBoxFor(x => x.URUNID, new { @class = "form-control", @readonly = "readonly", required = "required" })
+        <br />
+        @Html.LabelFor(x => x.URUNAD)
+        @Html.TextBoxFor(x => x.URUNAD, new { @class = "form-control" , maxlength = 49, required = "required" })
+        <br />
+        @Html.LabelFor(x => x.MARKA)
+        @Html.TextBoxFor(x => x.MARKA, new { @class = "form-control", maxlength = 49, required = "required" })
+        <br />
+        @Html.LabelFor(x => x.URUNKATEGORI)
+        @Html.DropDownListFor(x=>x.TBLKATEGORILER.KATEGORIID,(List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        @*@Html.TextBoxFor(x => x.URUNKATEGORI, new { @class = "form-control" })*@
+        <br />
+        @Html.LabelFor(x => x.FIYAT)
+        @Html.TextBoxFor(x => x.FIYAT, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.STOK)
+        @Html.TextBoxFor(x => x.STOK, new { @class = "form-control" })
+
+
+
+
+
+    </div>
+    <div>
+        <button class="btn btn-warning">Ürünü Güncelle</button>
+    </div>
+}

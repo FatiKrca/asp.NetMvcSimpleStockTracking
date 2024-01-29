@@ -1,0 +1,48 @@
+﻿@model MvcStokTakip.Models.Entity.TBLKATEGORILER
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@if (ViewBag.KategoriVar != null)
+{
+    <div id="alertDiv" class="alert alert-danger">
+        <h3>
+            Kategori Zaten Var...
+        </h3>
+    </div>
+}
+<div style="text-align:center">
+    <h2> YENİ KATEGORİ EKLE</h2>
+</div>
+
+
+<div class="container">
+    <form class="form-group" method="post">
+
+        @*<div>
+                <label>Kategori Adı</label>
+                <input type="text" / class="form-control" name="KATEGORIAD">
+            </div>*@
+
+        <div>
+            <label>Kategori Adı</label>
+            @Html.TextBoxFor(x => x.KATEGORIAD, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.KATEGORIAD, "", new { @style = "color:red" })
+        </div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Kategori Ekle</button>
+
+        </div>
+    </form>
+
+</div>
+<script>
+    $(document).ready(function () {
+        // Hide the alert after 4 seconds
+        setTimeout(function () {
+            $('#alertDiv').fadeOut('slow');
+        }, 4000);
+    });
+</script>

@@ -1,0 +1,91 @@
+﻿@using MvcStokTakip.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLSATISLAR>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="text-align:center">
+    <h2> SATIŞLAR</h2>
+</div>
+
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Müşteri Adı </th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <th>@item.TBLURUNLER.URUNAD</th>
+                <td>@item.TBLMUSTERILER.MUSTERIAD @item.TBLMUSTERILER.MUSTERISOYAD</td>
+                <td>@item.ADET</td>
+                <td>@item.FIYAT</td>
+
+                <td>@Html.ActionLink("Sil", "SIL", new { id = item.SATISID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor musun?')" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div style="text-align:right; ">
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+</div>
+
+
+
+<button style="margin-top: -110px" type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal1">
+    Satış Yap
+</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h2 class="modal-title">
+                    Satış Ekleme Ekranı
+                </h2>
+            </div>
+            <form action="@Url.Action("YeniSatis", "Satis")" method="post">
+                <div>
+                    <label for="URUN">
+                        Ürün Adı
+                    </label>
+                    <input type="text" id="URUN" name="URUN" class="form-control" />
+
+                    <label for="MUSTERI">
+                        Müşteri Adı Soyadı
+                    </label>
+                    <input type="text" id="MUSTERI" name="MUSTERI" class="form-control" />
+
+                    <label for="ADET">
+                        Adet
+                    </label>
+                    <input type="text" id="ADET" name="ADET" class="form-control" />
+
+                    <label for="FIYAT">
+                        Fiyat
+                    </label>
+                    <input type="text" id="FIYAT" name="FIYAT" class="form-control" />
+
+                    <button type="submit" class="btn btn-success">Satış İşlemini Yap</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

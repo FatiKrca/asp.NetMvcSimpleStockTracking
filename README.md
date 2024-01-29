@@ -8,7 +8,7 @@ Bu proje, ASP.NET MVC kullanılarak geliştirilmiş bir stok takip uygulamasıd�
 1. Bu projeyi bilgisayarınıza klonlayın:
 
     ```bash
-    git clone https://github.com/FatiKrca/STOK_TAKIP_PROJESI.git
+    git clone https://github.com/FatiKrca/asp.NetMvcSimpleStockTracking.git
     ```
 
 2. Visual Studio veya başka bir C# IDE kullanarak projeyi açın.
